@@ -17,7 +17,8 @@ import yahoo_quote_download.yqd as yqd
 from datetime import datetime
 
 def get_stock(ticker, start, end):
-    df = pd.DataFrame.from_csv(yqd.load_yahoo_quote(ticker, start, end))
+    import io
+    df = pd.DataFrame.from_csv(io.StringIO(yqd.load_yahoo_quote(ticker, start, end)))
     return df
 
 
